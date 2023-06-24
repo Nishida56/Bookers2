@@ -6,11 +6,12 @@
       <th>Title</th>
       <th>Opinion</th>
     </tr>
+    <tr>
     <% @books.each do |book| %>
 
-      <%= image_tag @user.get_profile_image(100,100) %>
       <%= link_to book_path(book.id) do %>
-
+    </tr>
+    <% end %>
     <% end %>
   </head>
 </table>
