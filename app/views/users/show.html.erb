@@ -1,3 +1,20 @@
+
+<h1>Users info</h1>
+<table>
+  <head>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th></th>
+    </tr>
+  </head>
+</table>
+
+    <%= link_to 'editkari', edit_user_path(@user.id) %>
+
 <h1>Books</h1>
 <table>
   <head>
