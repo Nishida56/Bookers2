@@ -1,0 +1,25 @@
+<h1>Users info</h1>
+<table>
+  <head>
+    <tr>
+      <th><%= image_tag user.get_profile_image(100,100) %></th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+    <tr>
+      <th>
+        <% if user == current_user %>
+          <%= link_to "editkari", edit_user_path(current_user.id) %>
+        <% else %>
+          <%= link_to "editkari", user_path(current_user.id) %>
+        <% end %>
+      </th>
+    </tr>
+  </head>
+</table>
