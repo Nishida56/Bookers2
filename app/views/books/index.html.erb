@@ -1,4 +1,4 @@
-<h3>Books#index</h3>
+<h3>Books#index　みんなの本が見れます</h3>
 
 <h1>Books</h1>
 <table>
@@ -10,7 +10,7 @@
     </tr>
     <% @books.each do |book| %>
     <tr>
-      <th></th>
+      <th><%= image_tag book.user.get_profile_image(100,100) %></th>
       <th><%= book.title %></th>
       <th><%= book.body %></th>
     </tr>

@@ -3,6 +3,9 @@
 <table>
   <head>
     <tr>
+      <th><%= image_tag @user.get_profile_image(100,100) %></th>
+    </tr>
+    <tr>
       <th>name</th>
       <th><%= @user.name %></th>
     </tr>
@@ -12,8 +15,6 @@
     </tr>
   </head>
 </table>
-
-    <%= link_to 'editkari', edit_user_path(@user.id) %>
 
 <h1>Books</h1>
 <table>
@@ -25,10 +26,14 @@
     </tr>
     <tr>
     <% @books.each do |book| %>
-
-      <%= link_to book_path(book.id) do %>
+      <th></th>
+      <th>
+        <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+            <% end %>
+      </th>
+      <th><%= book.body %></th>
     </tr>
-    <% end %>
     <% end %>
   </head>
 </table>
