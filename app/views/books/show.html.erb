@@ -4,9 +4,14 @@
 <table>
   <head>
     <tr>
-      <th></th>
-      <th><%= @book.title %></th>
+      <th><%= image_tag @user.get_profile_image(100,100) %></th>
+      <th>
+        <%= link_to book_path(@book.id) do %>
+          <%= @book.title %>
+        <% end %>
+      </th>
       <th><%= @book.body %></th>
     </tr>
   </head>
 </table>
+<%= link_to @user.name, user_path(@user) %>
