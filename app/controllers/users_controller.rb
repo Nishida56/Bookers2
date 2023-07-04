@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     login_user_id = current_user.id
     if user.id != login_user_id
-      redirect_to books_path
+      redirect_to user_path(current_user.id)
     end
   end
 
