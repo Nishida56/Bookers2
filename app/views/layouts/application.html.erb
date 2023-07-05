@@ -6,54 +6,115 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/45af6b1bba.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
     <head>
-      <%= link_to 'Bookers', root_url %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+          <%= link_to 'Bookers', root_url, class: 'navbar-brand' %>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria=label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class ="navbar-collapse collapse" id="navbarNavDropdown" style>
+
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Homes</span>
+                  <% end %>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to users_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <span>Users</span>
+                  <% end %>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to books_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    <span>Books</span>
+                  <% end %>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    <span>Users</span>
+                  <% end %>
+                </a>
+              </li>
+            <% else %>
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to root_url, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Home</span>
+                  <% end %>
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to '/home/about', class: 'nav-link text-light' do %>
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                    <span>About</span>
+                  <% end %>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link text-light">
+                  <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    <span>Sign up</span>
+                  <% end %>
+                </a>
+                <a class="nav-link text-light">
+                  <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    <span>Log in</span>
+                  <% end %>
+                </a>
+              </li>
+            </ul>
+          </div>
+            <% end %>
+        </div>
+      </nav>
     </head>
     <main>
 
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to 'Homes', user_path(current_user.id) %>
-      </li>
 
-      <li>
-        <%= link_to 'Users', users_path %>
-      </li>
-
-      <li>
-        <%= link_to 'Books', books_path %>
-      </li>
-
-      <li>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to 'Home', root_url %>
-      </li>
-
-      <li>
-        <%= link_to 'About', '/home/about' %>
-      </li>
-      <li>
-        <%= link_to 'Sign up', new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to 'Log in', new_user_session_path %>
-      </li>
-    <% end %>
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, class:key %>
   <% end %>
     <%= yield %>
 
     </main>
-  </body>
 
+    <footer>
+      <div class="row">
+        CopyRight Infratop.inc
+      </div>
+    </footer>
+  </body>
 </html>
