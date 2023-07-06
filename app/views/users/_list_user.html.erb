@@ -1,9 +1,9 @@
-<h1>Users info</h1>
-<table>
-  <head>
-    <tr>
-      <th><%= image_tag user.get_profile_image(100,100) %></th>
-    </tr>
+<h2>Users info</h2>
+<th><%= image_tag user.get_profile_image(100,100) %></th>
+
+<table class="table">
+  <tbody>
+    <tr></tr>
     <tr>
       <th>name</th>
       <th><%= user.name %></th>
@@ -12,10 +12,10 @@
       <th>introduction</th>
       <th><%= user.introduction %></th>
     </tr>
-    <tr>
-      <th>
-          <%= link_to "editkari", edit_user_path(user.id) %>
-      </th>
-    </tr>
-  </head>
+  </tbody>
 </table>
+<div class="row">
+  <%= link_to edit_user_path(user.id) , class: 'btn btn-outline-secondary btn-block' do  %>
+    <i class="fas fa-user-cog" aria-hidden="true"></i>
+  <% end %>
+</div>
